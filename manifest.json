@@ -1,92 +1,42 @@
 {
+   "action": {
+      "default_icon": {
+         "128": "logo128.png",
+         "16": "logo16mono.png",
+         "48": "logo48.png"
+      },
+      "default_title": "Securly Classroom"
+   },
    "background": {
-      "service_worker": "securly.min.js"
+      "service_worker": "background.js",
+      "type": "module"
    },
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "content_ai.min.js" ],
-      "matches": [ "https://docs.google.com/*", "https://gemini.google.com/*", "https://chatgpt.com/*", "https://student.magicschool.ai/*", "https://student.schoolai.com/*", "https://app.schoolai.com/assistants/*", "https://app.briskteaching.com/*", "https://notebooklm.google.com/*", "https://copilot.microsoft.com/*" ],
-      "run_at": "document_start"
-   }, {
-      "all_frames": true,
-      "js": [ "content.min.js" ],
-      "matches": [ "*://*.youtube.com/*", "*://youtube.com/*", "*://youtube-nocookie.com/*", "*://*.youtube-nocookie.com/*", "*://youtubeeducation.com/*", "*://*.youtubeeducation.com/*" ],
-      "run_at": "document_start"
-   }, {
-      "all_frames": true,
-      "js": [ "content2.min.js" ],
-      "matches": [ "*://*.google.com/maps/*", "*://google.com/maps/*" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": true,
-      "js": [ "content3.min.js" ],
-      "matches": [ "*://bing.com/search*", "*://www.bing.com/search*", "*://search.yahoo.com/search*", "*://www.search.yahoo.com/search*", "*://youtube.com/*", "*://www.youtube.com/*", "*://google.com/search*", "*://www.google.com/search*", "*://google.co.uk/search*", "*://www.google.co.uk/search*", "*://google.ie/search*", "*://www.google.ie/search*", "*://google.ca/search*", "*://www.google.ca/search*", "*://google.com.au/search*", "*://www.google.com.au/search*", "*://google.co.in/search*", "*://www.google.co.in/search*" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": true,
-      "js": [ "content6.min.js" ],
-      "matches": [ "*://meet.google.com/*" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": false,
-      "js": [ "content4.min.js" ],
+      "exclude_matches": [ "*://richmondlp.com/*", "*://*.eschooldata.com/*", "*://*.arbitersports.com/*" ],
+      "js": [ "cs.js" ],
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
       "matches": [ "\u003Call_urls>" ],
       "run_at": "document_idle"
-   }, {
-      "all_frames": true,
-      "js": [ "content5.min.js" ],
-      "matches": [ "\u003Call_urls>" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": true,
-      "js": [ "content10.min.js" ],
-      "matches": [ "*://chat.google.com/*" ],
-      "run_at": "document_start"
-   }, {
-      "all_frames": true,
-      "include_globs": [ "https://www.google.*/*" ],
-      "js": [ "content9.min.js" ],
-      "matches": [ "https://*/*" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": false,
-      "js": [ "content7.min.js" ],
-      "matches": [ "*://*.securly.com/crextn/geoloc.html" ],
-      "run_at": "document_idle"
-   }, {
-      "all_frames": true,
-      "js": [ "content8.min.js" ],
-      "matches": [ "\u003Call_urls>" ],
-      "run_at": "document_start"
-   }, {
-      "all_frames": true,
-      "js": [ "content11.min.js" ],
-      "matches": [ "\u003Call_urls>" ],
-      "run_at": "document_start"
    } ],
-   "description": "Secure and manage your 1:1 Chromebooks with Securly",
-   "host_permissions": [ "*://*/", "file://*" ],
+   "host_permissions": [ "\u003Call_urls>", "*://*/*" ],
    "icons": {
-      "128": "icon128.png",
-      "16": "icon16.png",
-      "48": "icon48.png"
+      "128": "logo128.png",
+      "16": "logo16mono.png",
+      "48": "logo48.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo3mMpyJzOwWY+04jYpCbECs3sk/TtVJq1ca8xDm/Tze09OxpdjcC1PdqlIupIP4v3NXUBPaGjCCwujfAtN02z6NrwLx/ao0RsL5iMG5LS42o1B5DXKoffoTykMwhsXjYbrIgq4rsNq3rOqp7Gsu5acYTkb2zD+5KOF1QRQiwhv8matTVzr1S3UyMZNthiXbFw+rk41kcArBiaSsbW662l+jxsYrowLedWM0o0Mcb0FztW+BehTfzgCJhHBHEPydYhxiwyknNsU+ATbD/nI2765ov50uqh2N4cnloHcj4rbPiQrLKsWjBZfZksxeKJ6UVy4B6kpqRuX3ilLH/u8jwewIDAQAB",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkBbRuQOfZamL2tIe1JoCoUseFrT/trs4dR70c66P/W6qR8tk8ISVGWMeTWOQVjJ/ZGEvw+IYizqVLFQP/lEPhSkTzTUcrYrYyAAqcwXTrSBDbes84fosGdjOw7KCV9QncUBSZcVKuBcHhxGeZ1hGwYNPBAPA+6bUHfaucqxqWNwz/d91xYQ22BzpWVCn19gjB+kEEaWQNXaj8BYYhrp+0ETl6ZZs0PBRovwsxT00PCrqsTVrHICT3yOpbAJNOoiAlOm41L3yJv+ZnOaTnuz2UflioZtZp1LduBnnzynXN1eekGLDiy6ZupNippU1knpERUskAXVoj9FcHXT3OktOSwIDAQAB",
    "manifest_version": 3,
-   "name": "Securly for Chromebooks",
-   "oauth2": {
-      "client_id": "979354546084.apps.googleusercontent.com",
-      "scopes": [ "email" ]
-   },
-   "permissions": [ "webRequest", "webRequestBlocking", "identity", "cookies", "tabs", "browsingData", "identity.email", "geolocation", "idle", "downloads", "storage", "scripting", "declarativeNetRequest", "declarativeNetRequestWithHostAccess", "declarativeNetRequestFeedback", "system.display", "alarms", "webNavigation", "offscreen" ],
+   "minimum_chrome_version": "88.0.4324",
+   "name": "Securly Classroom",
+   "permissions": [ "activeTab", "alarms", "declarativeNetRequest", "declarativeNetRequestWithHostAccess", "enterprise.deviceAttributes", "gcm", "geolocation", "identity", "identity.email", "idle", "nativeMessaging", "notifications", "offscreen", "scripting", "storage", "webRequest" ],
    "short_name": "Securly",
-   "storage": {
-      "managed_schema": "schema.json"
-   },
    "update_url": "https://crextnaut.securly.com/subscribers/defaultfrommanifest@securly.com/update-manifest.xml",
-   "version": "3.0.37",
+   "version": "1.35.2",
    "web_accessible_resources": [ {
+      "extension_ids": [ "ffndjmfjhjdamkocbfonjmoaecaflhga", "ljbaelmjoebdeieggdgiaaapncdicekm", "kgbbkfikebgafcfjgpdflkcoihjjlfmd", "jfbecfmiegcjddenjhlbhlikcbfmnafd" ],
       "matches": [ "\u003Call_urls>" ],
-      "resources": [ "fonts/*", "*.svg" ]
+      "resources": [ "*", "blocking/*", "fonts/*" ]
    } ]
 }
